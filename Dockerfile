@@ -1,6 +1,7 @@
-FROM ubuntu:20.04
-RUN apt-get update && apt-get install -y \
-    wget\
-    default-jdk\
-    git\
-    maven\
+FROM tomcat:8.0-alpine
+LABEL maintainer="deepak@softwareyoga.com"
+
+ADD sample.war /usr/local/tomcat/webapps/
+
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
